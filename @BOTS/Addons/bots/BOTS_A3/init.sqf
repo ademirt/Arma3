@@ -34,10 +34,6 @@ ADD_RECRUIT = {
 		false
 	];
 
-	//Gray Tone theme
-	//"colorCorrections" ppEffectEnable true;
-	//"colorCorrections" ppEffectAdjust [1.0, 1.1, 0.0,[1.0, 1.0, 1.0, 0.0],[1.0, 1.0, 0.9, 0.35],[0.3,0.3,0.3,-0.1]];
-	//"colorCorrections" ppEffectCommit 0;
 };
 
 waitUntil {(!isNull player) and (alive player)};

@@ -1,0 +1,85 @@
+private ["_crashNum, _time"];
+///////////////////////////////////////
+//      Function file for UKGZ	     //
+//        Created by: Richie         //
+//  Modded by:  Vampire & xBowBii    //
+//  Modded for Exile by Darth_Rogue  //
+//		& Shamis	     //
+///////////////////////////////////////
+
+//Spawn frequency ± variance in minutes
+#define SPAWN_FREQUENCY 40
+#define SPAWN_VARIANCE 15
+
+//The higher the number, the more accurate the timer is.
+//Must be positive and non-zero.
+#define TIMER_RESOLUTION 10
+
+//Chance to spawn a crash site
+#define SPAWN_CHANCE 0.75
+
+//Parameters for finding a suitable position to spawn the crash site
+//#define SEARCH_CENTER [7049,9241]
+//#define SEARCH_RADIUS 4880
+//#define SEARCH_DIST_MIN 20
+//#define SEARCH_SLOPE_MAX 2
+//#define SEARCH_BLACKLIST [[[2092,14167],[10558,12505]]]
+
+//Number of crash sites to spawn at the beginning of the mission
+//#define INITIAL_NUM 3
+_crashNum = (random 2)+1;
+ //["chernarus",[7652.9634, 7870.8076]
+_centerPOS = [7652.9634, 7870.8076]; //[10088,9045,0]; original  [6145,6010,0]; esseker
+_minDistCenter = 0; // minimum distance from the center position (Number) in meters
+_maxDist = 4880; // maximum distance from the center position (Number) in meters
+_minDist = 20; //18  minimum distance from the nearest object (Number) in meters, ie. spawn at least this distance away from anything within x meters. Low _mindist means helicrashes could spawn near towns or in forests.. higher the number it would be spawning in an open field etc
+_waterMode = 0; // water mode 0: cannot be in water , 1: can either be in water or not , 2: must be in water
+_landMode = 0; // 0: does not have to be at a shore , 1: must be at a shore
+_i = 0;
+
+_vSpawnCrashes = {
+	//for "_j" from 1 to _crashNum do {
+		_crashPOS = [_centerPOS,_minDistCenter,_maxDist,_minDist,_waterMode,20,_landMode] call BIS_fnc_findSafePos;
+		_wrecks = ["Land_UWreck_MV22_F","Land_UWreck_Heli_Attack_02_F","Land_Wreck_Plane_Transport_01_F"]; 
+		_spawnMe = _wrecks call BIS_fnc_SelectRandom;
+		_heli = _spawnMe createVehicle [0,0,0];
+		_fire = "test_EmptyObjectForFireBig" createVehicle (position _heli);
+		_fire attachto [_heli, [0,0,-1]];
+		_heli setDir (random 360);
+		_heli setPos _crashPOS;
+		_heliPos = getPosATL _heli;
+		_heli setPosATL _heliPos;
+		
+		_marker1 = createMarker ["mark"+str _i, position _heli];
+		_marker1 setMarkerType "mil_objective";//"ELLIPSE";
+		_i = _i +1;
+		diag_log format["HELICRASHES: %1 spawned at %2", _spawnMe, _crashPOS];
+	//};
+};
+
+call _vSpawnCrashes;
+
+//Spawn initial crash sites
+ for "_j" from 1 to _crashNum do
+{
+	call _vSpawnCrashes;
+};
+
+while {true} do
+{
+	//Pick a time to attempt spawning
+	//currentTime + frequency + ±1 * variance
+	_time = time + 60 * ((SPAWN_FREQUENCY) + ((round random 1) * 2 - 1) * random (SPAWN_VARIANCE));
+	
+	//Wait until the previously decided time
+	while {time < _time} do
+	{
+		uiSleep (60 * (SPAWN_FREQUENCY) / (TIMER_RESOLUTION));
+	};
+	
+	//try to spawn
+	if ((SPAWN_CHANCE) > random 1) then
+	{
+		call _vSpawnCrashes;
+	};
+};

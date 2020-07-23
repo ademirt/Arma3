@@ -1,0 +1,60 @@
+author="Phronk";
+OverviewTextLocked=" ";
+OverviewPicture="logo.paa";
+onLoadMission=" ";
+onLoadName="Addon-Free ArmA Radio";
+loadScreen="logo.paa";
+class Header{gameType=COOP;minPlayers=1;maxPlayers=7;playerCountMultipleOf=1;};
+
+enableDebugConsole=1;
+allowFunctionsRecompile=0;
+allowFunctionsLog=0;
+disabledAI=0;
+saving=0;
+respawn=3;
+respawnDelay=7;
+///////////////////////////////////////////
+///////////////////////////////////////////
+#include "AFAR\UI\defines.hpp"
+#include "AFAR\UI\dialogs.hpp"
+
+class CfgSounds {
+#include "AFAR\f\SFX.hpp"
+sounds[]={};
+};
+
+//OPTIONAL STUFF///////////////////////////
+class CfgRemoteExec {					///
+	class Functions {					///
+	mode=1;jip=0;						///
+
+	class noVON {allowedTargets=0;};	///
+	class sortD {allowedTargets=0;};	///
+	class Fuzz {allowedTargets=0;};		///
+	class Fuzz2 {allowedTargets=0;};	///
+	class Fuzz3 {allowedTargets=0;};	///
+	class r_alert {allowedTargets=0;};	///
+	class Hush {allowedTargets=0;};		///
+	class r_anim {allowedTargets=0;};	///
+	class S_In0 {allowedTargets=0;};	///
+	class S_In1 {allowedTargets=0;};	///
+	class C_In {allowedTargets=0;};		///
+	class G_In {allowedTargets=0;};		///
+	class V_In {allowedTargets=0;};		///
+	class D_In {allowedTargets=0;};		///
+	class sOut0 {allowedTargets=0;};	///
+	class sOut1 {allowedTargets=0;};	///
+	class cOut {allowedTargets=0;};		///
+	class gOut {allowedTargets=0;};		///
+	class vOut {allowedTargets=0;};		///
+	class dOut {allowedTargets=0;};		///
+};										///
+	class Commands {					///
+	mode=1;jip=0;						///
+	class playSound {allowedTargets=0;};///
+	class reveal {allowedTargets=0;};	///
+	class say2D {allowedTargets=0;};	///
+	};									///
+};										///
+///////////////////////////////////////////
+///////////////////////////////////////////

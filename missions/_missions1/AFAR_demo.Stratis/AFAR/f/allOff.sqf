@@ -1,0 +1,1 @@
+{_x enableChannel false}count r_CH;{_x radioChannelRemove[player]}forEach[ch6,ch7,ch8];if(!alive player)then{5 enableChannel false;};

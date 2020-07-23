@@ -1,0 +1,18 @@
+The following is not allowed, read strictly forbidden!
+
+Uploading Domination to Steam Workshop is not allowed (only by myself)!!!!!
+
+You are not allowed to monetize videos recorded/streamed while playing Domination in any form!!!!
+
+Server owners are also not allowed to monetize their servers with perks or anything else when using/playing Domination!
+(Again, non-commercial license!)
+
+Additionally you are not allowed to use any of the Dom scripts/dialogs/images/whatever outside of the mission!
+
+It is also strictly forbidden for server host companys to sell or rent servers with the mission!!
+(Non commercial license, not that hard to understand)
+
+THIS MISSION IS Arma 3 only! Because no derivates are allowed it also means no port to any other game in the series is allowed!
+
+You are free to edit the mission for your own server but you may not release the mission elsewhere (read the license!).
+Furthermore you may not use servside addons with code from the mission or from your modded version. All code has to be in the mission.pbo!

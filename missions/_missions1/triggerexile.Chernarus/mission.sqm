@@ -1,0 +1,120 @@
+version=52;
+class EditorData
+{
+	moveGridStep=0.125;
+	angleGridStep=0.017453292;
+	scaleGridStep=0.1;
+	autoGroupingDist=10;
+	toggles=6;
+	class ItemIDProvider
+	{
+		nextID=31;
+	};
+	class MarkerIDProvider
+	{
+		nextID=1;
+	};
+	class Camera
+	{
+		pos[]={1284.4601,772.59656,11295.712};
+		dir[]={0.035000835,-0.46292096,0.88571429};
+		up[]={0.018279271,0.88639671,0.4625603};
+		aside[]={0.99922442,1.3862882e-007,-0.039486907};
+	};
+};
+binarizationWanted=0;
+class AddonsMetaData
+{
+};
+randomSeed=16244370;
+class ScenarioData
+{
+	author="Madmaxx";
+};
+class Mission
+{
+	class Intel
+	{
+		timeOfChanges=1800.0002;
+		startWeather=0.25;
+		startWind=0.1;
+		startWaves=0.1;
+		forecastWeather=0.25;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		forecastLightnings=0.1;
+		year=2008;
+		month=10;
+		day=11;
+		hour=9;
+		minute=20;
+		startFogDecay=0.014;
+		forecastFogDecay=0.014;
+	};
+	class Entities
+	{
+		items=4;
+		class Item0
+		{
+			dataType="Trigger";
+			position[]={13779.125,314.12485,11354.75};
+			angle=5.2359877;
+			class Attributes
+			{
+				name="b";
+				sizeA=300;
+				sizeB=300;
+			};
+			id=1;
+			type="EmptyDetector";
+			atlOffset=303.08701;
+		};
+		class Item1
+		{
+			dataType="Trigger";
+			position[]={3738,402.00003,5993.125};
+			angle=5.2359877;
+			class Attributes
+			{
+				name="a";
+				sizeA=300;
+				sizeB=300;
+			};
+			id=28;
+			type="EmptyDetector";
+			atlOffset=-0.68899536;
+		};
+		class Item2
+		{
+			dataType="Trigger";
+			position[]={669.125,376.74973,13847.125};
+			angle=5.2359877;
+			class Attributes
+			{
+				name="vid";
+				text="vid";
+				sizeA=300;
+				sizeB=300;
+			};
+			id=29;
+			type="EmptyDetector";
+			atlOffset=2.4670105;
+		};
+		class Item3
+		{
+			dataType="Trigger";
+			position[]={5666.625,66.999519,2518.125};
+			angle=5.2359877;
+			class Attributes
+			{
+				name="balootaapart";
+				text="balootaapart";
+				sizeA=300;
+				sizeB=300;
+			};
+			id=30;
+			type="EmptyDetector";
+			atlOffset=-4.2770004;
+		};
+	};
+};

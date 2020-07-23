@@ -1,0 +1,67 @@
+class Header {
+	gameType = COOP;
+	minPlayers = 1;
+	maxPlayers = 40;
+};
+
+overviewPicture = "media\SEN_imgLoading.paa";
+Author = "SENSEI";
+onLoadName = "Dynamic Combat Gen.";
+onLoadMission = "DCG 3.0.9";
+loadScreen = "media\SEN_imgLogo.paa";
+briefing = 0;
+respawn = 3;
+respawndelay = 3;
+RespawnDialog = 1;
+disabledAI = 1;
+//ShowGPS = 0;
+//forceRotorLibSimulation = 1;
+enableDebugConsole = 1;
+//allowFunctionsLog = 1;
+//allowFunctionsRecompile = 1;
+
+corpseManagerMode = 1;
+corpseLimit = 10;
+corpseRemovalMinTime = 70;
+corpseRemovalMaxTime = 850;
+
+wreckManagerMode = 1;
+wreckLimit = 5;
+wreckRemovalMinTime = 80;
+wreckRemovalMaxTime = 850;
+
+taskManagement_markers3D = 1;
+taskManagement_markers2D = 1; //0: do not use new 2D markers (default), 1: replace task markers with new 2D markers
+taskManagement_propagate = 0; //0: do not propagate (default), 1: propagate shared tasks to subordinates
+taskManagement_drawDist = 250; //3D marker draw distance as UNASSIGNED (default: 2000)
+
+#include "scripts\VehicleHud\dialog.hpp"
+#include "scripts\VVS\menu.h"
+#include "data\defuse_common.hpp"
+#include "data\explosivePad.hpp"
+#include "data\SEN_ace_settings.hpp"
+#include "data\SEN_XEH.hpp"
+#include "bon_recruit_units\dialog\common.hpp"
+#include "bon_recruit_units\dialog\recruitment.hpp"
+#include "ASORVS\menu.hpp"
+
+class Params {
+	#include "data\SEN_params.hpp"
+};
+class CfgFunctions {
+	#include "scripts\VVS\Functions.h"
+	#include "data\SEN_cfgFunctions.hpp"
+	#include "ASORVS\cfgfunctions.hpp"
+};
+class RscTitles {
+	#include "scripts\VehicleHud\hud_titles.sqf"
+};
+class CfgSounds {
+	#include "data\SEN_cfgSounds.hpp"
+};
+class CfgHints {
+	#include "data\SEN_cfgHints.hpp"
+};
+class CfgNotifications {
+	#include "data\SEN_cfgNotifications.hpp"
+};

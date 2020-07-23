@@ -1,0 +1,1 @@
+execVM"AFAR\init.sqf";

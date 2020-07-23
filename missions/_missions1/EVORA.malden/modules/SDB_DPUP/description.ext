@@ -1,0 +1,18 @@
+// CfgDPUP
+#include "CfgDPUP.hpp"
+
+// Functions
+class CfgFunctions {
+	#include "CfgFunctions.hpp"
+};
+
+//Sounds
+class CfgSounds {
+	sounds[] = {};
+	#include "CfgSounds.hpp"
+};
+
+// RscTitles
+class RscTitles {
+	#include "RscTitles.hpp"
+};

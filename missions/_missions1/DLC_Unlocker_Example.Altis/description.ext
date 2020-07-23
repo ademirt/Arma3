@@ -1,0 +1,14 @@
+author = "chasEE";
+OnLoadName = "DLC Unlocker Script";
+OnLoadMission = "Example mission for the DLC Unlocker Script.";
+respawnDelay = 2;
+respawn = "BASE";
+disabledAI = 1;
+enableDebugConsole = 2;
+
+class Header
+{
+	gameType = Sandbox; // Game type, see 'class' columns in the table below
+	minPlayers = 1; //min # of players the mission supports
+	maxPlayers = 2; //max # of players the mission supports
+};

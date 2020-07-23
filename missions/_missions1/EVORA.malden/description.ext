@@ -1,0 +1,106 @@
+/* DO NOT CHANGE UNLESS YOU KNOW WHAT YOU ARE DOING -> CRASHES IMMINENT */
+
+// Headers
+class Header {
+	gameType	= "CTI";
+	minPlayers	= 1;
+	maxPlayers	= 24;
+};
+onLoadName						= "EvorA";
+author							= "Sgt. Dennenboom [~EW~]";
+onLoadMission					= "Destroy the radiotower and clear out the enemy in each objective! Construct FOB's and buy equipment, vehicles and soldiers to be more effective. Read the briefing for more info!";
+
+// Difficulty
+enableItemsDropping				= 0;
+forceRotorLibSimulation			= 0;
+showGroupIndicator				= 0;
+
+// Settings
+enableDebugConsole				= 1;
+allowFunctionsLog				= 1;
+allowFunctionsRecompile			= 0;
+saving 							= 0;
+disabledAI 						= 1;
+joinUnassigned					= 0;
+scriptedPlayer					= 1;
+
+// Respawn & Revive
+respawn 						= 3;
+respawnButton					= 1;
+respawnDelay 					= 2;
+respawnDialog					= 1;
+respawnOnStart					= -1;
+respawnTemplates[]				= {"Counter"};
+reviveMode						= 1;
+reviveUnconsciousStateMode		= 0;
+reviveRequiredTrait				= 0;
+reviveRequiredItems				= 0;
+reviveRequiredItemsFakConsumed	= 0;
+reviveMedicSpeedMultiplier		= 2;
+reviveDelay						= 10;
+reviveForceRespawnDelay			= 5;
+reviveBleedOutDelay				= 300;
+
+corpseManagerMode = 1;
+corpseLimit = 5;
+corpseRemovalMinTime = 60;
+corpseRemovalMaxTime = 120;
+
+wreckManagerMode = 0;
+wreckLimit = 3;
+wreckRemovalMinTime = 120;
+wreckRemovalMaxTime = 360;
+
+// Vehicle randomization
+//disableRandomization[]			= {"AllVehicles"};
+
+// Addons
+cba_settings_hasSettingsFile	= 1;
+
+// Params
+#include "data\CfgParams.hpp"
+
+// Ammoboxes
+#include "data\CfgAmmobox.hpp"
+
+// Vehicle magazines
+#include "data\CfgVehicleMags.hpp"
+
+// CfgDPUP
+#include "modules\SDB_DPUP\CfgDPUP.hpp"
+
+#include "bon_recruit_units\dialog\common.hpp"
+#include "bon_recruit_units\dialog\recruitment.hpp"
+
+// Functions
+class CfgFunctions {
+	class EVOR {
+		#include "functions\CfgFunctions.hpp"
+	};
+	#include "modules\SDB_DALE\CfgFunctions.hpp"
+	#include "modules\SDB_DPUP\CfgFunctions.hpp"
+};
+
+// Dialogs
+#include "dialogs\dlg_defines.hpp"
+#include "dialogs\dlg_menu.hpp"
+#include "dialogs\dlg_shop.hpp"
+#include "dialogs\dlg_transport.hpp"
+#include "dialogs\dlg_funds.hpp"
+#include "dialogs\dlg_settings.hpp"
+#include "modules\SDB_DALE\RscLoadout.hpp"
+
+// Titles
+class RscTitles {
+	#include "dialogs\rsc_progress.hpp"
+	#include "dialogs\rsc_splashIntro.hpp"
+	#include "dialogs\rsc_titleIntro.hpp"
+	#include "dialogs\rsc_titleOutro.hpp"
+	#include "modules\SDB_DPUP\RscTitles.hpp"
+};
+
+//Sounds
+class CfgSounds {
+	sounds[] = {};
+	#include "modules\SDB_DPUP\CfgSounds.hpp"
+};

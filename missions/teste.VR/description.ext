@@ -1,0 +1,2 @@
+#include "bots\bots_a3\dialog\common.hpp"
+#include "bots\bots_a3\dialog\recruitment.hpp"

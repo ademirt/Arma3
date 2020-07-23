@@ -1,0 +1,1 @@
+class DPUP_SoundLock {name = ""; sound[] = {"@a3\sounds_f\vehicles\air\noises\alarm_locked_by_missile_4.wss",db-5,1}; titles[] = {};};

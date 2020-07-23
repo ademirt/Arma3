@@ -1,0 +1,1 @@
+[] execVM "dlc_unlocker.sqf";

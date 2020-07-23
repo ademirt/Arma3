@@ -1,0 +1,6 @@
+///'a3_exile_occupation.pbo' from Mikero's dos tools, dll version 5.52///
+pboprefix=x\addons\a3_exile_occupation
+prefix=x\addons\a3_exile_occupation
+Pbo Type is: Arma Addon
+Sha: 'E0A4DD211D7FB36FB6B6ED3AAC44706B03862094'
+//////</HEADER>//////

@@ -47,15 +47,16 @@ hint parseText format["Processing your <t size='1.0' font='PuristaMedium' color=
 //sleep 1;
 
 //private _unit = group player createUnit [_unittype, ([(getPos bon_recruit_barracks select 0) + 33 - random 33,(getPos bon_recruit_barracks select 1) + 40 - random 50,0]), [], 0, "NONE"];
-private _grp = group player;
-private _unit = _grp createUnit [_unittype, _grp, [], 0, "FORM"]; 
+_unit = group player createUnit [_unittype, [0,0,0], [], 0, "NONE"];
+
+private _veBOT = nil;
 
 if (_unittype == "I_Fighter_Pilot_F") then {	
     
-	private _jat = ["B_Plane_CAS_01_dynamicLoadout_F","B_Plane_Fighter_01_F","B_Plane_Fighter_01_Stealth_F"];
+	private _jat = ["I_Plane_Fighter_03_dynamicLoadout_F","I_Plane_Fighter_04_F"];
 	
-	private _F35Bveh = createVehicle [(_jat call BIS_fnc_selectRandom), [0,0,0], [], 950, "FLY"];
-	_unit moveInDriver _F35Bveh;
+	_veBOT = createVehicle [(_jat call BIS_fnc_selectRandom), [0,0,0], [], 950, "FLY"];
+	_unit moveInDriver _veBOT;
 	
 	[side _unit , "HQ"] sideChat "The force on the way!!";
 };
@@ -63,14 +64,15 @@ if (_unittype == "I_Fighter_Pilot_F") then {
 if (_unittype == "I_helipilot_F") then {
 	
 	
-	private _hlTrp = ["I_Heli_light_03_dynamicLoadout_F"];
+	private _hlTrp = ["I_Heli_light_03_dynamicLoadout_F","O_Heli_Light_02_dynamicLoadout_F"];
 	
-	if (isClass(configFile >> "CfgPatches" >> "rhs_main")) then {
-		_hlTrp append ["RHS_UH60M","RHS_UH1Y_d" ];
-	};
+	// if (isClass(configFile >> "CfgPatches" >> "rhs_main")) then {
+		// _hlTrp append ["RHS_UH60M","RHS_UH1Y_d" ];
+	// };
 	
-	private _heli_TR = createVehicle [(_hlTrp call BIS_fnc_selectRandom), [0,0,0], [], 300, "FLY"];
-	_unit moveInDriver _heli_TR;
+	_veBOT = createVehicle [(_hlTrp call BIS_fnc_selectRandom), [0,0,0], [], 300, "FLY"];
+	
+	_unit moveInDriver _veBOT;
 	
 	[side _unit, "HQ"] sideChat "Transport on the way!!";
 };
@@ -94,15 +96,22 @@ if (_unittype == "I_Story_Colonel_F") then {
 	
 	private _unit2 = group player createUnit ["I_helicrew_F", [0,0,0], [], 0, "NONE"];	
 	
-	private _hlX = ["B_Heli_Attack_01_F"];
+	// private _hlX = ["B_Heli_Attack_01_F"];
 	
-	if (isClass(configFile >> "CfgPatches" >> "rhs_main")) then {
-		_hlX append ["RHS_AH1Z_wd","RHS_AH64D"];
-	};
+	// if (isClass(configFile >> "CfgPatches" >> "rhs_main")) then {
+		// _hlX append ["RHS_AH1Z_wd","RHS_AH64D"];
+	// };
 	
-	private _heli_at = createVehicle [(_hlX call BIS_fnc_selectRandom), [0,0,0], [], 300, "FLY"];
-	_unit moveInDriver _heli_at;
-	_unit2 moveInGunner _heli_at;
+	//_veBOT = createVehicle [(_hlX call BIS_fnc_selectRandom), [0,0,0], [], 300, "FLY"];
+	_veBOT = createVehicle ["O_Heli_Attack_02_dynamicLoadout_F", [0,0,0], [], 300, "FLY"];
+	[
+		_veBOT,
+		["Black",1], 
+		true
+	] call BIS_fnc_initVehicle;
+
+	_unit moveInDriver _veBOT;
+	_unit2 moveInGunner _veBOT;
 	
 	[side _unit, "HQ"] sideChat "Heli attack on the way!!";
 };
@@ -553,14 +562,16 @@ _unit addAction ["<t color='#1d78ed'>Dismiss</t>","bots\BOTS_A3\dismiss.sqf",[],
 _unit setVariable ["BIS_noCoreConversations", true];
 _unit setSpeaker "NoVoice";
 
-_pos = (getPosWorld player) vectorAdd [14 - random 10 ,12 - random 10 ,0];
-_unit setPosWorld _pos;
-
 {_unit enableAI _x} forEach ["TARGET", "AUTOTARGET", "MOVE"];
 
 [_unit] execVM ("bots\BOTS_A3\init_newunit.sqf");
 
 //[_unit] call A3A_fnc_initRevive;
+
+if (isNil "_veBOT") then {
+  _pos = (getPosWorld player) vectorAdd [7 + random 12 ,9 + random 10 ,0];
+  _unit setPosWorld _pos;
+};
 
 hint parseText format["Your <t size='1.0' font='PuristaMedium' color='#008aff'>%1</t> %2 has arrived.",_typename,name _unit];
 bon_recruit_queue = bon_recruit_queue - [_queuepos];

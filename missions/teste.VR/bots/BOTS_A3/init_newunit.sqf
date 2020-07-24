@@ -1,8 +1,7 @@
 _unit = _this select 0;
 
-
-if (isServer) then{
-  [_unit] execFSM ("bots\BOTS_A3\unit_lifecycle.fsm");  
+if (isServer) then{  
+  [_unit] execFSM ("bots\BOTS_A3\unit_lifecycle.fsm");
 } else {
   bon_recruit_newunit = _unit;
   publicVariable "bon_recruit_newunit";	

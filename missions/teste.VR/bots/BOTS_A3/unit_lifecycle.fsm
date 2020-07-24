@@ -80,7 +80,7 @@ class FSM
       init = /*%FSM<STATEINIT""">*/"if(not isNull _unit) then {" \n
        "	_unit spawn {" \n
        "		_this setDamage 1;" \n
-       "		sleep 120;" \n
+       "		sleep 100;" \n
        "		hideBody _this;" \n
        "		sleep 5;" \n
        "		deleteVehicle _this;" \n

@@ -22,7 +22,7 @@ ADD_RECRUIT = {
 	player setUnitRecoilCoefficient 0.4;
 	
 	player addAction [
-		"<t color='#1E90FF'>...>> Recrutar!!</t>", 
+		"<t color='#1E90FF'>...>>--------- Recrutar!!</t>", 
 		"bots\BOTS_A3\open_dialog.sqf", 
 		0, 
 		-1, 
@@ -33,11 +33,6 @@ ADD_RECRUIT = {
 		-1, 
 		false
 	];
-
-	//Gray Tone theme
-	//"colorCorrections" ppEffectEnable true;
-	//"colorCorrections" ppEffectAdjust [1.0, 1.1, 0.0,[1.0, 1.0, 1.0, 0.0],[1.0, 1.0, 0.9, 0.35],[0.3,0.3,0.3,-0.1]];
-	//"colorCorrections" ppEffectCommit 0;
 };
 
 waitUntil {(!isNull player) and (alive player)};

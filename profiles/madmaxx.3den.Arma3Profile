@@ -1,0 +1,6 @@
+version=1;
+class EngineAttributes
+{
+	saveBinarized=0;
+	autosaveTime=-1000;
+};

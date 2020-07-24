@@ -39,20 +39,22 @@ if(_queuecount > 0) then {
 };
 bon_recruit_queue pushBack _queuepos;
 
-[] call _update_queue;
+call _update_queue;
 
 WaitUntil{_queuepos == bon_recruit_queue select 0};
 sleep (0.5 * (_queuepos min 1));
 hint parseText format["Processing your <t size='1.0' font='PuristaMedium' color='#ffd800'>%1</t>.",_typename];
-sleep 1;
+//sleep 1;
 
-private _unit = group player createUnit [_unittype, ([(getPos bon_recruit_barracks select 0) + 33 - random 33,(getPos bon_recruit_barracks select 1) + 40 - random 50,0]), [], 0, "NONE"];
+//private _unit = group player createUnit [_unittype, ([(getPos bon_recruit_barracks select 0) + 33 - random 33,(getPos bon_recruit_barracks select 1) + 40 - random 50,0]), [], 0, "NONE"];
+private _grp = group player;
+private _unit = _grp createUnit [_unittype, _grp, [], 0, "FORM"]; 
 
 if (_unittype == "I_Fighter_Pilot_F") then {	
     
 	private _jat = ["B_Plane_CAS_01_dynamicLoadout_F","B_Plane_Fighter_01_F","B_Plane_Fighter_01_Stealth_F"];
 	
-	private _F35Bveh = createVehicle [(_jat call BIS_fnc_selectRandom), [0,0,0], [], 2000, "FLY"];
+	private _F35Bveh = createVehicle [(_jat call BIS_fnc_selectRandom), [0,0,0], [], 950, "FLY"];
 	_unit moveInDriver _F35Bveh;
 	
 	[side _unit , "HQ"] sideChat "The force on the way!!";
@@ -194,9 +196,8 @@ if (_unittype == "I_G_engineer_F") then {
 	_unit addItemToVest "30Rnd_9x21_Mag";
 	for "_i" from 1 to 5 do {_unit addItemToVest "hlc_30rnd_556x45_EPR_G36";};
 	_unit addItemToVest "hlc_100rnd_556x45_M_G36";
-	_unit addItemToBackpack "ClaymoreDirectionalMine_Remote_Mag";
-	_unit addItemToBackpack "DemoCharge_Remote_Mag";
-	_unit addItemToBackpack "SatchelCharge_Remote_Mag";
+	_unit addItemToBackpack "ToolKit";
+    _unit addItemToBackpack "MineDetector";
 	for "_i" from 1 to 3 do {_unit addItemToBackpack "SmokeShell";};
 	for "_i" from 1 to 9 do {_unit addItemToBackpack "hlc_30rnd_556x45_EPR_G36";};
 	_unit addItemToBackpack "hlc_100rnd_556x45_M_G36";
@@ -284,7 +285,8 @@ if (_unittype == "I_G_Survivor_F") then {
 
 if (_unittype == "I_soldier_UAV_F") then {
 	_unit addAction ["<t color='#ff9900'>Greyhawk</t>","bots\BOTS_A3\extra\grey.sqf",[],1,false,true,""];
-	_unit addAction ["<t color='#ff9900'>Falcon</t>","bots\BOTS_A3\extra\falco.sqf",[],1,false,true,""];
+	//Independentes não possuem Falco
+	//_unit addAction ["<t color='#ff9900'>Falcon</t>","bots\BOTS_A3\extra\falco.sqf",[],1,false,true,""];
 	
 	[_unit] call _removeAiItens;
 
@@ -379,7 +381,9 @@ if (_unittype == "I_G_Sharpshooter_F") then {
 	_unit addWeapon "hlc_rifle_M14dmr_Rail";
 	_unit addPrimaryWeaponItem "hlc_optic_ZF95Base";
 	_unit addWeapon "hlc_smg_mp5k";
-	_unit addHandgunItem "hlc_optic_ZF95Base";
+	_unit addHandgunItem "hlc_muzzle_Agendasix";
+    _unit addHandgunItem "hlc_30Rnd_9x19_B_MP5";
+
 
 };
 
@@ -481,8 +485,7 @@ if (_unittype == "I_ghillie_sard_F") then {
 	  _unit forceAddUniform "U_B_FullGhillie_ard";
 	  _unit addWeapon "srifle_GM6_F";
 	  _unit addPrimaryWeaponItem "optic_LRPS";
-	};
-	
+	};	
 
 	_unit addItemToUniform "FirstAidKit";
 	for "_i" from 1 to 2 do {_unit addItemToUniform "5Rnd_127x108_Mag";};
@@ -541,6 +544,7 @@ _unit linkItem "ItemRadio";
 _unit linkItem "ItemGPS";
 _unit linkItem "NVGoggles";
 
+
 _unit enableFatigue false;
 _unit enableStamina false;
 _unit setCustomAimCoef 0.3;
@@ -549,12 +553,16 @@ _unit addAction ["<t color='#1d78ed'>Dismiss</t>","bots\BOTS_A3\dismiss.sqf",[],
 _unit setVariable ["BIS_noCoreConversations", true];
 _unit setSpeaker "NoVoice";
 
+_pos = (getPosWorld player) vectorAdd [14 - random 10 ,12 - random 10 ,0];
+_unit setPosWorld _pos;
+
 {_unit enableAI _x} forEach ["TARGET", "AUTOTARGET", "MOVE"];
 
 [_unit] execVM ("bots\BOTS_A3\init_newunit.sqf");
+
 //[_unit] call A3A_fnc_initRevive;
 
 hint parseText format["Your <t size='1.0' font='PuristaMedium' color='#008aff'>%1</t> %2 has arrived.",_typename,name _unit];
 bon_recruit_queue = bon_recruit_queue - [_queuepos];
 
-[] call _update_queue;
+call _update_queue;

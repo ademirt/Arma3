@@ -33,7 +33,6 @@ ADD_RECRUIT = {
 		-1, 
 		false
 	];
-
 };
 
 waitUntil {(!isNull player) and (alive player)};
@@ -41,19 +40,3 @@ waitUntil {(!isNull player) and (alive player)};
 
 _bRes = player addEventHandler ["Respawn", {[_this] call ADD_RECRUIT}];
 _bRes = player addEventHandler ["Killed", {[_this] call ADD_RECRUIT}];
-
- 
-/* _botRe = [] spawn {
-	waitUntil {!(IsNull (findDisplay 46))};
-	waituntil {!isNull player};
-	
-		
-	(findDisplay 46) displayAddEventHandler ["KeyDown", {
-		params["_display","_key"];
-		//tec num pad "-"
-		if(_key == 74) then {
-			//hint "ok";
-			[] call ADD_RECRUIT;	
-		};
-	}];
-}; */

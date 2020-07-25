@@ -12,7 +12,7 @@ _setDaySpeedFnc =
 
 _setNightSpeedFnc =
 {
-	setTimeMultiplier 20;
+	setTimeMultiplier 19;
 	waitUntil
 	{
 		_hour = (date select 3);

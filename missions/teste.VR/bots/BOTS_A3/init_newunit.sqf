@@ -8,6 +8,7 @@ if (isServer) then{
 };
 
 //removeAllActions _unit;
-//_unit addAction ["<t color='#1d78ed'>Dismiss</t>",BOTS_A3+"dismiss.sqf",[],-10,false,true,""];
-// _unit setVariable ["BIS_noCoreConversations", true];//_unit setSpeaker "NoVoice";
+_unit addAction ["<t color='#1d78ed'>Dismiss</t>","bots\BOTS_A3\dismiss.sqf",[],-10,false,true,""];
+_unit setVariable ["BIS_noCoreConversations", true];
+_unit setSpeaker "NoVoice";
 //_unit SetUnitPos "UP";

@@ -8,7 +8,7 @@ class RecruitUnitsDialog {
 	movingEnable = true;
 	enableSimulation = true;
 	onLoad = "[] execVM 'bots\BOTS_A3\build_unitlist.sqf'";
-
+	
 	__EXEC( _xSpacing = 0.0075;  _ySpacing = 0.01;)
 	__EXEC( _xInit = 12 * _xSpacing; _yInit = 18 * _ySpacing;)
 	__EXEC( _windowWidth = 101; _windowHeight = 64;)

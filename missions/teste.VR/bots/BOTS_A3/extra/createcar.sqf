@@ -33,13 +33,14 @@ _unitAi groupChat "We need a Hunter HMG now!!";
   "Landing this bird on your smoke. How copy?"
   ] call BIS_fnc_selectRandom;
   
+  private _ba = side player;
   
   sleep 15;
-  [West, "HQ"] sideChat "Request vehicle confirmed!!!";
+  [_ba, "HQ"] sideChat "Request vehicle confirmed!!!";
   sleep 6;
-  [West, "HQ"] sideChat "Dispatching heavy airborne resupply to marked position.";
+  [_ba, "HQ"] sideChat "Dispatching heavy airborne resupply to marked position.";
   sleep 5;
-  [West, "HQ"] sideChat _chatter;
+  [_ba, "HQ"] sideChat _chatter;
   
   sleep 30;
 

@@ -34,19 +34,19 @@ private _declareServerVariable = {
 [2,"initialising general server variables",_fileName] call A3A_fnc_log;
 
 //time to delete dead bodies, vehicles etc..
-DECLARE_SERVER_VAR(cleantime, 600);
+DECLARE_SERVER_VAR(cleantime, 155);
 //initial spawn distance. Less than 1Km makes parked vehicles spawn in your nose while you approach.
 DECLARE_SERVER_VAR(distanceSPWN, 1000);
 DECLARE_SERVER_VAR(distanceSPWN1, 1300);
 DECLARE_SERVER_VAR(distanceSPWN2, 500);
 //Quantity of Civs to spawn in (most likely per client - Bob Murphy 26.01.2020)
-DECLARE_SERVER_VAR(civPerc, 5);
+DECLARE_SERVER_VAR(civPerc, 1);
 //The furthest distance the AI can attack from using helicopters or planes
 DECLARE_SERVER_VAR(distanceForAirAttack, 10000);
 //The furthest distance the AI can attack from using trucks and armour
 DECLARE_SERVER_VAR(distanceForLandAttack, if (hasIFA) then {5000} else {3000});
 //Max units we aim to spawn in. It's not very strictly adhered to.
-DECLARE_SERVER_VAR(maxUnits, 138);
+DECLARE_SERVER_VAR(maxUnits, 95);
 
 //Disabled DLC according to server parameters
 DECLARE_SERVER_VAR(disabledMods, call A3A_fnc_initDisabledMods);
@@ -98,7 +98,7 @@ DECLARE_SERVER_VAR(destroyedBuildings, []);
 //Initial HR
 server setVariable ["hr",8,true];
 //Initial faction money pool
-server setVariable ["resourcesFIA",6000,true];
+server setVariable ["resourcesFIA",7500,true];
 
 ////////////////////////////////////
 //     SERVER ONLY VARIABLES     ///

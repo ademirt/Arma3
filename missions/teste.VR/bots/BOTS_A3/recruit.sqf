@@ -180,8 +180,8 @@ if (_unittype == "I_Soldier_GL_F") then {
 
 if (_unittype == "I_G_engineer_F") then {
   
-    _unit addAction ["<t color='#ff9900'>Request Vehicle</t>","bots\BOTS_A3\extra\createcar.sqf",[],1,false,true,""];
-  
+    _unit addAction ["<t color='#008000'>Call Paradrop Tank...</t>" ,"bots\BOTS_A3\extra\call_tank.sqf",[],1,false,true,""];  
+	_unit addAction ["<t color='#ff9900'>Request Vehicle</t>","bots\BOTS_A3\extra\createcar.sqf",[],1,false,true,""];	
 
 	[_unit] call _removeAiItens;
 	
@@ -558,13 +558,14 @@ _unit enableFatigue false;
 _unit enableStamina false;
 _unit setCustomAimCoef 0.3;
 _unit setUnitRecoilCoefficient 0.4;
-_unit addAction ["<t color='#1d78ed'>Dismiss</t>","bots\BOTS_A3\dismiss.sqf",[],-10,false,true,""];
-_unit setVariable ["BIS_noCoreConversations", true];
-_unit setSpeaker "NoVoice";
+//_unit addAction ["<t color='#1d78ed'>Dismiss</t>","bots\BOTS_A3\dismiss.sqf",[],-10,false,true,""];
+//_unit setVariable ["BIS_noCoreConversations", true];
+//_unit setSpeaker "NoVoice";
 
 {_unit enableAI _x} forEach ["TARGET", "AUTOTARGET", "MOVE"];
 
-[_unit] execVM ("bots\BOTS_A3\init_newunit.sqf");
+//[_unit] execVM ("bots\BOTS_A3\init_newunit.sqf");
+[_unit] call compile preprocessFileLineNumbers "bots\BOTS_A3\init_newunit.sqf";
 
 //[_unit] call A3A_fnc_initRevive;
 

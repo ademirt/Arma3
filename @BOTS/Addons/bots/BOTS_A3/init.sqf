@@ -9,9 +9,12 @@ if (isServer) then {
 	};
 };
 
+//call compile preprocessFileLineNumbers "bots\BOTS_A3\paradrop.sqf";
+
 if (isDedicated) exitWith {};
 	
-[] execVM "bots\BOTS_A3\dlc_unlocker.sqf";
+//[] execVM "bots\BOTS_A3\dlc_unlocker.sqf";
+call compile preprocessFileLineNumbers "bots\BOTS_A3\dlc_unlocker.sqf";
 
 ADD_RECRUIT = {
 	waitUntil {(!isNull player) and (alive player)};
@@ -22,7 +25,7 @@ ADD_RECRUIT = {
 	player setUnitRecoilCoefficient 0.4;
 	
 	player addAction [
-		"<t color='#1E90FF'>...>> Recrutar!!</t>", 
+		"<t color='#1E90FF'>...>>--------- Recrutar!!</t>", 
 		"bots\BOTS_A3\open_dialog.sqf", 
 		0, 
 		-1, 
@@ -36,7 +39,7 @@ ADD_RECRUIT = {
 };
 
 waitUntil {(!isNull player) and (alive player)};
-[] call ADD_RECRUIT;
+call ADD_RECRUIT;
 
 _bRes = player addEventHandler ["Respawn", {[_this] call ADD_RECRUIT}];
 _bRes = player addEventHandler ["Killed", {[_this] call ADD_RECRUIT}];

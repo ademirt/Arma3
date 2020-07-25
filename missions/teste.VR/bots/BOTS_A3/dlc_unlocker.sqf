@@ -110,7 +110,9 @@ DLC_Vehicles_Jets = [
 "B_Plane_Fighter_01_Stealth_F",
 "O_Plane_Fighter_02_F",
 "O_Plane_Fighter_02_Stealth_F",
-"I_Plane_Fighter_04_F"
+"I_Plane_Fighter_04_F",
+"B_AFV_Wheeled_01_cannon_F",
+"I_LT_01_cannon_F","I_LT_01_AT_F"
 ];
 // Not the actual Jet's DLC ID but works anyway for now (will need to be updated)
 DLC_ID_Jets = 249860;
@@ -188,13 +190,18 @@ DLC_Functions_Handle = {
 
 DLC_Functions_AddAction = {
 	_vehicle = _this select 0;
+	removeAllActions _vehicle;
 	_type = (typeOf (vehicle _vehicle));
 	_config  = (configFile >>  "CfgVehicles" >>  _type);
 	_displayVehicle = if (isText(_config >> "displayName")) then {getText(_config >> "displayName")};
 	_displayVehicle = "<t color='#FFFF00'>" + _displayVehicle + "<t/>";
-	DLC_AddAction_1 = _vehicle addAction ["<t color='#FF0000'>Get in<t/> " + _displayVehicle + " <t color='#FF0000'>without DLC</t>",{player moveInDriver (_this select 0)},[],1,false,true,"","_this distance _target < 8"];
+	DLC_AddAction_1 = _vehicle addAction ["<t color='#FF0000'>Get in<t/> " + _displayVehicle + " <t color='#FF0000'>Driver</t>",{player moveInDriver (_this select 0)},[],1,false,true,"","_this distance _target < 8"];
+    DLC_AddAction_2 = _vehicle addAction ["<t color='#FF0000'>Get in<t/> " + _displayVehicle + " <t color='#FF0000'>Commander</t>",{player moveInCommander (_this select 0)},[],1,false,true,"","_this distance _target < 8"];
+    DLC_AddAction_3 = _vehicle addAction ["<t color='#FF0000'>Get in<t/> " + _displayVehicle + " <t color='#FF0000'>Gunner</t>",{player moveInGunner (_this select 0)},[],1,false,true,"","_this distance _target < 8"];	
 	_vehicle setVariable ["DLC_Var_AddAction_Active",true];
 	_vehicle setVariable ["DLC_Var_AddAction_Number",DLC_AddAction_1];
+	_vehicle setVariable ["DLC_Var_AddAction_Number",DLC_AddAction_2];
+	_vehicle setVariable ["DLC_Var_AddAction_Number",DLC_AddAction_3];
 };
 
 DLC_Functions_RemoveAction = {

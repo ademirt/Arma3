@@ -42,7 +42,7 @@ sleep 10;
 	 private _pos = _this select 0;
 		 
 	 private _prqd = createVehicle ["B_Parachute_02_F", [0,0,0], [], 0, 'FLY']; 
-	 _prqd setPos [(_pos select 0) + random 100 ,(_pos select 1) + 50 ,100]; 
+	 _prqd setPos [(_pos select 0) + random 100 ,(_pos select 1) + 50 ,600]; 
 	 
 	 private _tank = (["B_APC_Wheeled_01_cannon_F","B_MBT_01_TUSK_F","B_APC_Tracked_01_AA_F"] call BIS_fnc_selectRandom) createVehicle [0,0,0];  
 	 _tank allowdamage false; 
@@ -54,14 +54,17 @@ sleep 10;
 	 private _irStr = "NVG_TargetC" createVehicle [0,0,0]; 
 	 _irStr attachTo [_tank,[0,0,2],""]; //0,0,2 
 	 
+	 waitUntil {getPos _tank select 2 < 450}; 
 	 //SmokeShellRed 
 	 private _smkA = "SmokeShell" createVehicle [0,0,0]; 
 	 _smkA attachTo [_prqd,[0,0,31],""];
 	 
+	 waitUntil {getPos _tank select 2 < 320}; 
 	 //SmokeShellBlue 
 	 private _smkB = "SmokeShell" createVehicle [0,0,0]; 
 	 _smkB attachTo [_prqd,[0,4,31],""]; 
 	 
+	 waitUntil {getPos _tank select 2 < 180}; 
 	 //SmokeShell white
 	 private _smkW = "SmokeShell" createVehicle [0,0,0]; 
 	 _smkW attachTo [_prqd,[4,0,31],""];

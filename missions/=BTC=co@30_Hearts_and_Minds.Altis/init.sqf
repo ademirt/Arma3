@@ -1,5 +1,4 @@
 enableSaving [false, false];
-enableEnvironment [false, true];
 
 if (hasInterface) then {btc_intro_done = [] spawn btc_fnc_intro;};
 
@@ -19,3 +18,6 @@ if (!isDedicated && hasInterface) then {
 if (!isDedicated && !hasInterface) then {
     [] call compile preprocessFileLineNumbers "core\init_headless.sqf";
 };
+
+waitUntil { time > 0 };
+enableEnvironment [false, true];

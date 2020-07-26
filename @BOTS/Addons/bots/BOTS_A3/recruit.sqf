@@ -11,7 +11,7 @@ _update_queue = {
 	_queuelist ctrlSetText format["Units queued: %1",count bon_recruit_queue];
 };
 //-----------------------------------------------------
-_removeAiItens = {
+_rmvAIitens = {
 	_runit = _this select 0;
 	removeAllWeapons _runit;
 	removeAllItems _runit;
@@ -78,7 +78,7 @@ if (_unittype == "I_helipilot_F") then {
 };
 
 if (_unittype == "I_Story_Colonel_F") then {
-	[_unit] call _removeAiItens;
+	[_unit] call _rmvAIitens;
 
 	_unit forceAddUniform "TRYK_U_denim_jersey_blk";
 	_unit addItemToUniform "FirstAidKit";
@@ -117,7 +117,7 @@ if (_unittype == "I_Story_Colonel_F") then {
 };
 
 if (_unittype == "I_Soldier_AR_F") then {
-	[_unit] call _removeAiItens;
+	[_unit] call _rmvAIitens;
 
 	_unit forceAddUniform "TRYK_T_BLK_PAD";
 	for "_i" from 1 to 5 do {_unit addItemToUniform "FirstAidKit";};
@@ -139,7 +139,7 @@ if (_unittype == "I_Soldier_AR_F") then {
 };
 
 if (_unittype == "I_Soldier_GL_F") then {
-	[_unit] call _removeAiItens;
+	[_unit] call _rmvAIitens;
 	
 	
 	_unit addWeapon "arifle_AK12_GL_F";
@@ -183,7 +183,7 @@ if (_unittype == "I_G_engineer_F") then {
     _unit addAction ["<t color='#008000'>Call Paradrop Tank...</t>" ,"bots\BOTS_A3\extra\call_tank.sqf",[],1,false,true,""];  
 	_unit addAction ["<t color='#ff9900'>Request Vehicle</t>","bots\BOTS_A3\extra\createcar.sqf",[],1,false,true,""];	
 
-	[_unit] call _removeAiItens;
+	[_unit] call _rmvAIitens;
 	
 	_unit addWeapon "hlc_rifle_G36TAC";
 	_unit addPrimaryWeaponItem "muzzle_snds_M";
@@ -223,7 +223,7 @@ if (_unittype == "I_officer_F") then {
 };
 
 if (_unittype == "I_Soldier_AT_F") then {
-	[_unit] call _removeAiItens;
+	[_unit] call _rmvAIitens;
 
 	_unit forceAddUniform "TRYK_T_PAD";
 	for "_i" from 1 to 5 do {_unit addItemToUniform "FirstAidKit";};
@@ -252,7 +252,7 @@ if (_unittype == "I_Soldier_AT_F") then {
 
 if (_unittype == "I_G_Survivor_F") then {
 	
-	[_unit] call _removeAiItens;
+	[_unit] call _rmvAIitens;
 
 	_unit addWeapon "hlc_rifle_g36KTac";
 	_unit addPrimaryWeaponItem "hlc_muzzle_556NATO_KAC";
@@ -297,7 +297,7 @@ if (_unittype == "I_soldier_UAV_F") then {
 	//Independentes não possuem Falco
 	//_unit addAction ["<t color='#ff9900'>Falcon</t>","bots\BOTS_A3\extra\falco.sqf",[],1,false,true,""];
 	
-	[_unit] call _removeAiItens;
+	[_unit] call _rmvAIitens;
 
 	_unit forceAddUniform "TRYK_U_B_Denim_T_BG_BK";
 	for "_i" from 1 to 3 do {_unit addItemToUniform "hlc_12Rnd_357SIG_B_P226";};
@@ -319,7 +319,7 @@ if (_unittype == "I_soldier_UAV_F") then {
 };
 
 if (_unittype == "I_G_medic_F") then {
-	[_unit] call _removeAiItens;
+	[_unit] call _rmvAIitens;
 
 	_unit forceAddUniform "TRYK_U_B_BLK_tan_Rollup_CombatUniform";
 	for "_i" from 1 to 5 do {_unit addItemToUniform "FirstAidKit";};
@@ -343,7 +343,7 @@ if (_unittype == "I_G_medic_F") then {
 };
 
 if (_unittype == "I_G_Soldier_M_F") then {
-	[_unit] call _removeAiItens;
+	[_unit] call _rmvAIitens;
 
 
 	_unit forceAddUniform "TRYK_U_pad_hood_tan";
@@ -370,7 +370,7 @@ if (_unittype == "I_G_Soldier_M_F") then {
 };
 
 if (_unittype == "I_G_Sharpshooter_F") then {
-	[_unit] call _removeAiItens;
+	[_unit] call _rmvAIitens;
 
 
 	_unit forceAddUniform "TRYK_U_pad_hood_Cl_blk";
@@ -397,7 +397,7 @@ if (_unittype == "I_G_Sharpshooter_F") then {
 };
 
 if (_unittype == "I_G_Soldier_LAT_F") then {
-	[_unit] call _removeAiItens;
+	[_unit] call _rmvAIitens;
 
 
 	_unit forceAddUniform "TRYK_U_B_BLOD_T";
@@ -427,7 +427,7 @@ if (_unittype == "I_G_Soldier_LAT_F") then {
 
 if (_unittype == "I_Soldier_AA_F") then {
 
-	[_unit] call _removeAiItens;
+	[_unit] call _rmvAIitens;
 
 	_unit forceAddUniform "TRYK_T_TAN_PAD";
 	_unit addItemToUniform "FirstAidKit";
@@ -456,7 +456,7 @@ if (_unittype == "I_Soldier_AA_F") then {
 
 if (_unittype == "I_G_Soldier_LAT2_F") then {
 
-	[_unit] call _removeAiItens;
+	[_unit] call _rmvAIitens;
 
 	_unit forceAddUniform "U_IG_Guerrilla_6_1";
 	_unit addItemToUniform "FirstAidKit";
@@ -484,7 +484,7 @@ if (_unittype == "I_G_Soldier_LAT2_F") then {
 };
 
 if (_unittype == "I_ghillie_sard_F") then {
-	[_unit] call _removeAiItens;
+	[_unit] call _rmvAIitens;
 
 	if (toUpper(worldName) == "TANOA") then { 
 	  _unit forceAddUniform "U_B_T_FullGhillie_tna_F"; 
@@ -524,7 +524,7 @@ if (_unittype == "I_ghillie_sard_F") then {
 };
 
 if (_unittype == "I_Soldier_exp_F") then {
-	[_unit] call _removeAiItens;
+	[_unit] call _rmvAIitens;
 
 	_unit forceAddUniform "TRYK_U_B_PCUGs_gry_R";
 	_unit addItemToUniform "FirstAidKit";

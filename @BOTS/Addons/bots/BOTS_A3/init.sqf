@@ -41,5 +41,5 @@ ADD_RECRUIT = {
 waitUntil {(!isNull player) and (alive player)};
 call ADD_RECRUIT;
 
-_bRes = player addEventHandler ["Respawn", {[_this] call ADD_RECRUIT}];
-_bRes = player addEventHandler ["Killed", {[_this] call ADD_RECRUIT}];
+_bRes = player addEventHandler ["Respawn", {call ADD_RECRUIT}];
+_bRes = player addEventHandler ["Killed", {call ADD_RECRUIT}];

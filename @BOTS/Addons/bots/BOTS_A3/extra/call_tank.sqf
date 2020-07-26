@@ -5,25 +5,26 @@ sleep 3;
 _unC playMove "Acts_listeningToRadio_In";
 
 sleep 2;
-
 _unC groupChat "Papa Novembro 1 , Papa Novembro 1 , aqui é Papa Novembro 9. Câmbio!"; 
-sleep 3;		   
 
+sleep 3;
 _unC playMove "Acts_listeningToRadio_Loop";
 
-_unC groupChat "Solicito um pequeno pacote, rápido!!!  Câmbio!"; 
-sleep 3;
+_unC groupChat "Solicito solicito pacote, rápido!!!  Câmbio!"; 
 
+sleep 3;
+_unC groupChat "Segue dados de localização....  Câmbio!"; 
+
+sleep 3;
 _unC playMove "Acts_listeningToRadio_Loop";
 
 sleep 1;
 _unC playMove "Acts_listeningToRadio_Out";
 
-sleep 1;
 
-//
-sleep (18 + random 10);
-//
+//////////////////////////////////////////////////////////
+sleep (18 + random 15);
+//////////////////////////////////////////////////////////
 
 private _ba = side player;
 
@@ -35,14 +36,14 @@ sleep 25;
 
 sleep 65;
 [_ba, "HQ"] sideChat "Papa Novembro 9,  despachando sua carga!!!  Câmbio desligo!";
-sleep 10;
+sleep 15;
 
-[_posUn] spawn {  
- 
-	 private _pos = _this select 0;
+[_unC] spawn {  
+     private _unt = _this select 0;
+	 private _pos = (getPosWorld _unt); 
 		 
 	 private _prqd = createVehicle ["B_Parachute_02_F", [0,0,0], [], 0, 'FLY']; 
-	 _prqd setPos [(_pos select 0) + random 100 ,(_pos select 1) + 50 ,100]; 
+	 _prqd setPos [(_pos select 0) + random 100 ,(_pos select 1) + 55 ,560]; 
 	 
 	 private _tank = (["I_MBT_03_cannon_F","I_LT_01_cannon_F","I_LT_01_AT_F","I_APC_Wheeled_03_cannon_F","I_APC_tracked_03_cannon_F"] call BIS_fnc_selectRandom) createVehicle [0,0,0];  
 	 _tank allowdamage false; 
@@ -50,18 +51,24 @@ sleep 10;
 	 _tank attachTo [_prqd, [0, 0, -1.3]]; 
 	 _tank setDir random 360;
 	 
+	 _unt forceWeaponFire ["SmokeShellMuzzle","SmokeShellMuzzle"];
+	 _unt forceWeaponFire ["SmokeShellMuzzle","SmokeShellMuzzle"];
+	 
 	 //IRStrobe 
 	 private _irStr = "NVG_TargetC" createVehicle [0,0,0]; 
 	 _irStr attachTo [_tank,[0,0,2],""]; //0,0,2 
 	 
+	 waitUntil {getPos _tank select 2 < 430};
 	 //SmokeShellRed 
 	 private _smkA = "SmokeShell" createVehicle [0,0,0]; 
 	 _smkA attachTo [_prqd,[0,0,31],""];
 	 
+	 waitUntil {getPos _tank select 2 < 280};
 	 //SmokeShellBlue 
 	 private _smkB = "SmokeShell" createVehicle [0,0,0]; 
 	 _smkB attachTo [_prqd,[0,4,31],""]; 
 	 
+	 waitUntil {getPos _tank select 2 < 180};
 	 //SmokeShell white
 	 private _smkW = "SmokeShell" createVehicle [0,0,0]; 
 	 _smkW attachTo [_prqd,[4,0,31],""];

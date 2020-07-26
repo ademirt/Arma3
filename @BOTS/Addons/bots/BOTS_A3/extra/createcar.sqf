@@ -79,7 +79,7 @@ _unitAi groupChat "We need a Hunter HMG now!!";
   _wp setWaypointType "MOVE";
   _wp setWaypointCombatMode "GREEN";
 
-  waitUntil {_unitActual distance _posLz < 680};
+  waitUntil {_unitActual distance _posLz < 685};
   
   sleep 1;
   _unitAi forceWeaponFire ["SmokeShellMuzzle","SmokeShellMuzzle"];

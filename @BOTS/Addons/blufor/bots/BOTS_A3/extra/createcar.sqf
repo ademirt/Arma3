@@ -52,7 +52,7 @@ _unitAi playMove "Acts_listeningToRadio_Out";
   sleep 30;
 
   //tipo de veiculo requisitado....
-  private _veiculo = ["I_MRAP_03_gmg_F","I_MRAP_03_hmg_F"] call BIS_fnc_selectRandom;
+  private _veiculo = ["B_MRAP_01_hmg_F","B_MRAP_01_gmg_F"] call BIS_fnc_selectRandom;
   
   
   //hint str ((position _object) distance (position player));
@@ -62,7 +62,7 @@ _unitAi playMove "Acts_listeningToRadio_Out";
   private _originActual = [_origin, 5, floor random 360] call BIS_fnc_relPos;
   private _originCargo = [_origin, 5, floor random 360] call BIS_fnc_relPos;
 
-  private _unit = [_origin, 280, "O_Heli_Transport_04_F", side player] call BIS_fnc_spawnVehicle;
+  private _unit = [_origin, 280, "B_Heli_Transport_03_unarmed_F", side player] call BIS_fnc_spawnVehicle;
   private _unitActual = _unit select 0;
   private _unitGroup = _unit select 2;
   _unitActual groupChat "Transport is feet dry. Out.";

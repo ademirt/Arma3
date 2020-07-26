@@ -47,37 +47,33 @@ hint parseText format["Processing your <t size='1.0' font='PuristaMedium' color=
 //sleep 1;
 
 //private _unit = group player createUnit [_unittype, ([(getPos bon_recruit_barracks select 0) + 33 - random 33,(getPos bon_recruit_barracks select 1) + 40 - random 50,0]), [], 0, "NONE"];
-private _unit = group player createUnit [_unittype, [0,0,0], [], 0, "NONE"];
+private _unit = group player createUnit [_unittype, [0,0,0], [], 0, "NONE"];																			
 
 private _veBOT = nil;
 
-if (_unittype == "I_Fighter_Pilot_F") then {	
-    
-	private _jat = ["I_Plane_Fighter_03_dynamicLoadout_F","I_Plane_Fighter_04_F"];
+if (_unittype == "B_Fighter_Pilot_F") then {	
 	
-	_veBOT = createVehicle [(_jat call BIS_fnc_selectRandom), [0,0,0], [], 950, "FLY"];
+	_veBOT = createVehicle [(["B_Plane_CAS_01_dynamicLoadout_F","B_Plane_Fighter_01_F","B_Plane_Fighter_01_Stealth_F"] call BIS_fnc_selectRandom), [0,0,0], [], 2000, "FLY"];
 	_unit moveInDriver _veBOT;
 	
 	[side _unit , "HQ"] sideChat "The force on the way!!";
 };
 
-if (_unittype == "I_helipilot_F") then {
+if (_unittype == "B_helipilot_F") then {	
 	
+	private _hlTrp = ["B_Heli_Transport_01_F","B_Heli_Transport_01_camo_F"];
 	
-	private _hlTrp = ["I_Heli_light_03_dynamicLoadout_F","O_Heli_Light_02_dynamicLoadout_F"];
-	
-	// if (isClass(configFile >> "CfgPatches" >> "rhs_main")) then {
-		// _hlTrp append ["RHS_UH60M","RHS_UH1Y_d" ];
-	// };
+	if (isClass(configFile >> "CfgPatches" >> "rhs_main")) then {
+		_hlTrp append ["RHS_UH60M","RHS_UH1Y_d" ];
+	};
 	
 	_veBOT = createVehicle [(_hlTrp call BIS_fnc_selectRandom), [0,0,0], [], 300, "FLY"];
-	
 	_unit moveInDriver _veBOT;
 	
 	[side _unit, "HQ"] sideChat "Transport on the way!!";
 };
 
-if (_unittype == "I_Story_Colonel_F") then {
+if (_unittype == "B_Captain_Jay_F") then {
 	[_unit] call _rmvAIitens;
 
 	_unit forceAddUniform "TRYK_U_denim_jersey_blk";
@@ -94,29 +90,22 @@ if (_unittype == "I_Story_Colonel_F") then {
 	_unit addWeapon "hlc_rifle_RU556";
 	_unit addPrimaryWeaponItem "optic_Aco_smg";
 	
-	private _unit2 = group player createUnit ["I_helicrew_F", [0,0,0], [], 0, "NONE"];	
+	private _unit2 = group player createUnit ["B_helicrew_F", [0,0,0], [], 0, "NONE"];	
 	
-	// private _hlX = ["B_Heli_Attack_01_F"];
+	private _hlX = ["B_Heli_Attack_01_F"];
 	
-	// if (isClass(configFile >> "CfgPatches" >> "rhs_main")) then {
-		// _hlX append ["RHS_AH1Z_wd","RHS_AH64D"];
-	// };
+	if (isClass(configFile >> "CfgPatches" >> "rhs_main")) then {
+		_hlX append ["RHS_AH1Z_wd","RHS_AH64D"];
+	};
 	
-	//_veBOT = createVehicle [(_hlX call BIS_fnc_selectRandom), [0,0,0], [], 300, "FLY"];
-	_veBOT = createVehicle ["O_Heli_Attack_02_dynamicLoadout_F", [0,0,0], [], 300, "FLY"];
-	[
-		_veBOT,
-		["Black",1], 
-		true
-	] call BIS_fnc_initVehicle;
-
+	_veBOT = createVehicle [(_hlX call BIS_fnc_selectRandom), [0,0,0], [], 300, "FLY"];
 	_unit moveInDriver _veBOT;
 	_unit2 moveInGunner _veBOT;
 	
 	[side _unit, "HQ"] sideChat "Heli attack on the way!!";
 };
 
-if (_unittype == "I_Soldier_AR_F") then {
+if (_unittype == "B_Soldier_AR_F") then {
 	[_unit] call _rmvAIitens;
 
 	_unit forceAddUniform "TRYK_T_BLK_PAD";
@@ -131,14 +120,13 @@ if (_unittype == "I_Soldier_AR_F") then {
 	_unit addItemToBackpack "150Rnd_556x45_Drum_Mag_F";
 	_unit addHeadgear "TRYK_ESS_CAP_OD";
 
-
 	_unit addWeapon "hlc_m249_pip2";
 	_unit addPrimaryWeaponItem "optic_Arco_blk_F";
 	_unit addWeapon "hgun_ACPC2_F";
 	_unit addWeapon "Laserdesignator";
 };
 
-if (_unittype == "I_Soldier_GL_F") then {
+if (_unittype == "B_Soldier_GL_F") then {
 	[_unit] call _rmvAIitens;
 	
 	
@@ -178,10 +166,11 @@ if (_unittype == "I_Soldier_GL_F") then {
 	for "_i" from 1 to 5 do {_unit addItemToUniform "FirstAidKit";};
 };
 
-if (_unittype == "I_G_engineer_F") then {
+if (_unittype == "B_G_engineer_F") then {
   
     _unit addAction ["<t color='#008000'>Call Paradrop Tank...</t>" ,"bots\BOTS_A3\extra\call_tank.sqf",[],1,false,true,""];  
 	_unit addAction ["<t color='#ff9900'>Request Vehicle</t>","bots\BOTS_A3\extra\createcar.sqf",[],1,false,true,""];	
+
 
 	[_unit] call _rmvAIitens;
 	
@@ -207,6 +196,7 @@ if (_unittype == "I_G_engineer_F") then {
 	_unit addItemToVest "hlc_100rnd_556x45_M_G36";
 	_unit addItemToBackpack "ToolKit";
     _unit addItemToBackpack "MineDetector";
+													
 	for "_i" from 1 to 3 do {_unit addItemToBackpack "SmokeShell";};
 	for "_i" from 1 to 9 do {_unit addItemToBackpack "hlc_30rnd_556x45_EPR_G36";};
 	_unit addItemToBackpack "hlc_100rnd_556x45_M_G36";
@@ -215,14 +205,14 @@ if (_unittype == "I_G_engineer_F") then {
 	_unit addWeapon "Laserdesignator";
 };
 
-if (_unittype == "I_officer_F") then {
+if (_unittype == "B_officer_F") then {
    if (isNil "w_load_player") then {
 	  [player, [missionNamespace, "w_load_player"]] call bis_fnc_saveInventory;
    };
    [_unit, [missionNamespace, "w_load_player"]] call bis_fnc_loadInventory;//ghost enemy assault	
 };
 
-if (_unittype == "I_Soldier_AT_F") then {
+if (_unittype == "B_Soldier_AT_F") then {
 	[_unit] call _rmvAIitens;
 
 	_unit forceAddUniform "TRYK_T_PAD";
@@ -250,7 +240,7 @@ if (_unittype == "I_Soldier_AT_F") then {
 
 };
 
-if (_unittype == "I_G_Survivor_F") then {
+if (_unittype == "B_G_Survivor_F") then {
 	
 	[_unit] call _rmvAIitens;
 
@@ -292,10 +282,9 @@ if (_unittype == "I_G_Survivor_F") then {
 
 };
 
-if (_unittype == "I_soldier_UAV_F") then {
+if (_unittype == "B_soldier_UAV_F") then {
 	_unit addAction ["<t color='#ff9900'>Greyhawk</t>","bots\BOTS_A3\extra\grey.sqf",[],1,false,true,""];
-	//Independentes não possuem Falco
-	//_unit addAction ["<t color='#ff9900'>Falcon</t>","bots\BOTS_A3\extra\falco.sqf",[],1,false,true,""];
+	_unit addAction ["<t color='#ff9900'>Falcon</t>","bots\BOTS_A3\extra\falco.sqf",[],1,false,true,""];
 	
 	[_unit] call _rmvAIitens;
 
@@ -305,7 +294,7 @@ if (_unittype == "I_soldier_UAV_F") then {
 	for "_i" from 1 to 6 do {_unit addItemToVest "hlc_60Rnd_545x39_t_rpk";};
 	for "_i" from 1 to 2 do {_unit addItemToVest "hlc_12Rnd_357SIG_B_P226";};
 	_unit addItemToVest "hlc_45Rnd_545x39_t_rpk";
-	_unit addBackpack "I_UAV_01_backpack_F";
+	_unit addBackpack "B_UAV_01_backpack_F";
 	_unit addHeadgear "TRYK_UA_CAP";
 	_unit addGoggles "TRYK_TAC_SET_TAN";
 
@@ -315,10 +304,10 @@ if (_unittype == "I_soldier_UAV_F") then {
 	_unit addWeapon "hlc_pistol_P226R_Stainless";
 	_unit addHandgunItem "hlc_acc_DBALPL";
 	_unit addHandgunItem "HLC_Optic_Docter_CADEX";
-	_unit linkItem "I_UavTerminal";
+	_unit linkItem "B_UavTerminal";
 };
 
-if (_unittype == "I_G_medic_F") then {
+if (_unittype == "B_G_medic_F") then {
 	[_unit] call _rmvAIitens;
 
 	_unit forceAddUniform "TRYK_U_B_BLK_tan_Rollup_CombatUniform";
@@ -342,7 +331,7 @@ if (_unittype == "I_G_medic_F") then {
 	_unit addWeapon "hgun_ACPC2_F";
 };
 
-if (_unittype == "I_G_Soldier_M_F") then {
+if (_unittype == "B_G_Soldier_M_F") then {
 	[_unit] call _rmvAIitens;
 
 
@@ -369,7 +358,7 @@ if (_unittype == "I_G_Soldier_M_F") then {
 	_unit addWeapon "Binocular";
 };
 
-if (_unittype == "I_G_Sharpshooter_F") then {
+if (_unittype == "B_G_Sharpshooter_F") then {
 	[_unit] call _rmvAIitens;
 
 
@@ -396,7 +385,7 @@ if (_unittype == "I_G_Sharpshooter_F") then {
 
 };
 
-if (_unittype == "I_G_Soldier_LAT_F") then {
+if (_unittype == "B_G_Soldier_LAT_F") then {
 	[_unit] call _rmvAIitens;
 
 
@@ -425,7 +414,7 @@ if (_unittype == "I_G_Soldier_LAT_F") then {
 	_unit addWeapon "Binocular";
 };
 
-if (_unittype == "I_Soldier_AA_F") then {
+if (_unittype == "B_Soldier_AA_F") then {
 
 	[_unit] call _rmvAIitens;
 
@@ -454,7 +443,7 @@ if (_unittype == "I_Soldier_AA_F") then {
 
 };
 
-if (_unittype == "I_G_Soldier_LAT2_F") then {
+if (_unittype == "B_G_Soldier_LAT2_F") then {
 
 	[_unit] call _rmvAIitens;
 
@@ -483,7 +472,7 @@ if (_unittype == "I_G_Soldier_LAT2_F") then {
 	_unit addWeapon "Binocular";
 };
 
-if (_unittype == "I_ghillie_sard_F") then {
+if (_unittype == "B_ghillie_sard_F") then {
 	[_unit] call _rmvAIitens;
 
 	if (toUpper(worldName) == "TANOA") then { 
@@ -494,7 +483,8 @@ if (_unittype == "I_ghillie_sard_F") then {
 	  _unit forceAddUniform "U_B_FullGhillie_ard";
 	  _unit addWeapon "srifle_GM6_F";
 	  _unit addPrimaryWeaponItem "optic_LRPS";
-	};	
+	};
+	
 
 	_unit addItemToUniform "FirstAidKit";
 	for "_i" from 1 to 2 do {_unit addItemToUniform "5Rnd_127x108_Mag";};
@@ -523,7 +513,7 @@ if (_unittype == "I_ghillie_sard_F") then {
 	_unit setFace "CamoHead_Greek_02_F";
 };
 
-if (_unittype == "I_Soldier_exp_F") then {
+if (_unittype == "B_Soldier_exp_F") then {
 	[_unit] call _rmvAIitens;
 
 	_unit forceAddUniform "TRYK_U_B_PCUGs_gry_R";

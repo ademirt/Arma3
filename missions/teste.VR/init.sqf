@@ -5,17 +5,16 @@ bon_recruit_queue = [];
 if (isServer) then {
 	"bon_recruit_newunit" addPublicVariableEventHandler {
 		_newunit = _this select 1;
-		//[_newunit] execFSM (BOTS_A3+"unit_lifecycle.fsm");
+		[_newunit] execFSM ("bots\BOTS_A3\unit_lifecycle.fsm");		
 	};
 };
 
 //call compile preprocessFileLineNumbers "bots\BOTS_A3\paradrop.sqf";
-
-if (isDedicated) exitWith {};
-	
 //[] execVM "bots\BOTS_A3\dlc_unlocker.sqf";
 call compile preprocessFileLineNumbers "bots\BOTS_A3\dlc_unlocker.sqf";
 
+if (isDedicated) exitWith {};
+	
 ADD_RECRUIT = {
 	waitUntil {(!isNull player) and (alive player)};
 	
@@ -41,5 +40,5 @@ ADD_RECRUIT = {
 waitUntil {(!isNull player) and (alive player)};
 call ADD_RECRUIT;
 
-_bRes = player addEventHandler ["Respawn", {[_this] call ADD_RECRUIT}];
-_bRes = player addEventHandler ["Killed", {[_this] call ADD_RECRUIT}];
+_bRes = player addEventHandler ["Respawn", {call ADD_RECRUIT}];
+_bRes = player addEventHandler ["Killed", {call ADD_RECRUIT}];

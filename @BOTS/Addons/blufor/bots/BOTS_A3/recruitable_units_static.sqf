@@ -14,7 +14,7 @@ BOTS_recrtUnits =
 ,"B_Soldier_AA_F"
 ,"B_helipilot_F"
 ,"B_Fighter_Pilot_F"
-,"B_Captain_Jay_F"
+,"B_Competitor_F"
 ,"B_crew_F"
 ,"B_Soldier_exp_F"
 ,"B_soldier_F"

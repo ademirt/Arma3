@@ -73,7 +73,7 @@ if (_unittype == "B_helipilot_F") then {
 	[side _unit, "HQ"] sideChat "Transport on the way!!";
 };
 
-if (_unittype == "B_Captain_Jay_F") then {
+if (_unittype == "B_Competitor_F") then {
 	[_unit] call _rmvAIitens;
 
 	_unit forceAddUniform "TRYK_U_denim_jersey_blk";
